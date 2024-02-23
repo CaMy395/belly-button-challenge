@@ -183,11 +183,19 @@ function init() {
     
     // Toggle to new plots when option changed
     function optionChanged(selectedValue) {
-        demo(selectedValue);
         bar(selectedValue);
         bubble(selectedValue);
+         demo(selectedValue);
         gauge(selectedValue)
     }
+    d3.select("#selDataset").on("change", function() {
+        // Get the selected value
+        var selectedValue = d3.select(this).property("value");
+
+        // Call the function to update charts based on the selected value
+        optionChanged(selectedValue);
+    });
+
 }
 // Call the init function
 init();
